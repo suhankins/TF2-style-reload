@@ -1,0 +1,13 @@
+{
+    "name": "Team Fortress 2 style reload",
+    "description": "You reload automatically and can cancel reloading by shooting.",
+    "author": "Punished Bernadetta and Dr_Newbie",
+    "version": "30.09.2022",
+    "blt_version": 2,
+    "hooks": [
+        {
+            "hook_id": "lib/units/beings/player/states/playerstandard",
+            "script_path": "playerstandard.lua"
+        }
+    ]
+}
