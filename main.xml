@@ -1,0 +1,23 @@
+<table name="Team Fortress 2 style reload" author="Punished Bernadetta" global_key="tf2_style_reload">
+	<AssetUpdates id="39740" version="01.10.2022" provider="modworkshop"/>
+
+	<Localization directory="loc" default="english.json">
+        <loc file="english.json" language="english"/>
+        <loc file="russian.json" language="russian"/>
+	</Localization>
+
+	<Hooks>
+		<hook source_file="lib/units/beings/player/states/playerstandard" file="playerstandard.lua"/>
+	</Hooks>
+
+    <Options save_file="tf2_style_reload.txt">
+		<options title_id="tf2_style_reload_name">
+			<option
+                name="tf2_style_reload_autoreload"
+                type="bool" 
+                default_value="true"
+                title_id="tf2_style_reload_autoreload_name"
+                desc_id="tf2_style_reload_autoreload_desc"/>
+        </options>
+    </Options>
+</table>

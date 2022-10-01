@@ -1,0 +1,5 @@
+{
+    "tf2_style_reload_name": "TF2 Style Reload",
+    "tf2_style_reload_autoreload_name": "Auto-reload",
+    "tf2_style_reload_autoreload_desc": "Automatically reloads weapon"
+}

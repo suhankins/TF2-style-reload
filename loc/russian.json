@@ -1,0 +1,5 @@
+{
+    "tf2_style_reload_name": "TF2 Style Reload",
+    "tf2_style_reload_autoreload_name": "Автоматическая перезарядка",
+    "tf2_style_reload_autoreload_desc": "Автоматически перезаряжает оружие"
+}
