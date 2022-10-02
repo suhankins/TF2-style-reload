@@ -4,16 +4,26 @@ Hooks:PostHook(PlayerStandard, "init", "tf2_style_reload_init", function(self, u
 	self.RELOAD_INTERVAL = 0.4
 end)
 
+function PlayerStandard:add_delay(t)
+	self.autoreload_delay = t + self.RELOAD_INTERVAL
+end
+
 --Making shooting cancel reloading
 Hooks:PostHook(PlayerStandard, "_update_foley", "tf2_style_reload_update_foley", function(self, t, input)
 	local weap_base = self._equipped_unit:base()
 
 	--Aiming down sights always cancels reload
-	local steelsight_wanted = input.btn_steelsight_state
+	local steelsight_wanted = input.btn_steelsight_press
 	if self:_is_reloading() and steelsight_wanted then
+		self:add_delay(t)
 		self:_interupt_action_reload(t)
 		self._ext_camera:play_redirect(self:get_animation("idle")) -- otherwise it will play the reload animation
-		self:_start_action_steelsight(t)
+		self.steelsight_wanted = true
+	end
+
+	--Otherwise it breaks un-aiming if hold to aim is disabled
+	if self._state_data.in_steelsight then
+		self:add_delay(t)
 	end
 
 	--Atack only cancels reload if there are any bullets to shoot
@@ -21,7 +31,7 @@ Hooks:PostHook(PlayerStandard, "_update_foley", "tf2_style_reload_update_foley",
 	if attack_wanted
 	and (not weap_base:clip_empty() -- we can't fire if there's ammo to be loaded
 	or weap_base:out_of_ammo()) then -- but can dry fire if there's no ammo at all
-		self.autoreload_delay = t + self.RELOAD_INTERVAL
+		self:add_delay(t)
 
 		self:_interupt_action_reload(t)
 		self:_check_action_primary_attack(t, input)

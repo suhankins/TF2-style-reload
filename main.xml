@@ -1,5 +1,5 @@
 <table name="Team Fortress 2 style reload" author="Punished Bernadetta" global_key="tf2_style_reload">
-	<AssetUpdates id="39740" version="01.10.2022" provider="modworkshop"/>
+	<AssetUpdates id="39740" version="02.10.2022" provider="modworkshop"/>
 
 	<Localization directory="loc" default="english.json">
         <loc file="english.json" language="english"/>
